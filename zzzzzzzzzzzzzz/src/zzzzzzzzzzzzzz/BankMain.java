@@ -7,10 +7,14 @@ import java.util.Scanner;
 public class BankMain {
 	
 	private static String msgAuthenticationError;
+	protected final static double minAmount = 100.00;
+	protected static double depositAmount;
+	protected static double withdrawAmount;
 	
 	public static void main(String [] args) {
 		Scanner scan = new Scanner(System.in);
-			
+
+		//logic for sign in and logging in
 		do {
 			System.out.print("Enter username: ");
 			String userName = scan.nextLine();
@@ -26,7 +30,10 @@ public class BankMain {
 			
 		}while(msgAuthenticationError.equals("---Invalid Username Or PIN. Please try again Thank you!---"));
 		
-//		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		// logic for deposit and withdrawal process
+//		System.out.println("");
+//		System.out.println("Pease Choose Whether Deposit or Withdraw");
+		
  
 	 
 	}//end of main method
@@ -94,8 +101,29 @@ public class BankMain {
 
 //Deposit Class
 class Deposit extends BankMain{
+	
+	 public double getDepositAmount() {
+		 return depositAmount;
+	 }
+	 public void setDepositAmount(double depositAmount) {
+		 BankMain.depositAmount = depositAmount;
+	 }
+	 public boolean isValidDeposit(double dAmount) {
+		 return(dAmount >= BankMain.minAmount);
+	 }
 	 
-	 
+}
+
+class Withdraw extends BankMain{
+	 public double getWithdrawAmount() {
+		 return depositAmount;
+	 }
+	 public void setWithdrawAmount(double withdrawAmount) {
+		 BankMain.withdrawAmount = withdrawAmount;
+	 }
+	 public boolean isValidWithdraw(double wAmount) {
+		 return(wAmount >= BankMain.minAmount);
+	 }
 }
 
 
